@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: apiforge-deployment
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: apiforge
+
+  template:
+    metadata:
+      labels:
+        app: apiforge
+
+    spec:
+      containers:
+        - name: apiforge
+          image: apiforge:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+            
